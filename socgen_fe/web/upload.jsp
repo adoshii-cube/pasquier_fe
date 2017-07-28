@@ -89,9 +89,9 @@
             <main class="android-content mdl-layout__content">
                 <div class="page-content">
                     <div class="android-card-container mdl-grid">
-                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
                             <!--<div class="mdl-card__title">-->
-                                <!--Instructions: Download the master template and/or upload your company master template to activate a survey for your company-->
+                            <!--Instructions: Download the master template and/or upload your company master template to activate a survey for your company-->
                             <!--</div>-->
                             <div class="role-container">
                                 <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp upload jd">
@@ -107,13 +107,13 @@
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadFile"  readonly/>
+                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadJD"  readonly/>
                                             <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                                                 <i class="material-icons">attach_file</i>
-                                                <input type="file" name = "file" id="uploadBtn" accept=".csv">
+                                                <input type="file" name = "file" id="uploadJdBtn" accept=".pdf">
                                             </div>
                                         </div>
-                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadSubmit">Upload File</a>
+                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadJdSubmit">Upload File</a>
                                     </div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp upload resume">
@@ -129,13 +129,13 @@
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadFile"  readonly/>
+                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadResumeFiles"  readonly/>
                                             <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                                                 <i class="material-icons">attach_file</i>
-                                                <input type="file" name = "file" id="uploadBtn" accept=".csv">
+                                                <input type="file"  name = "files" id="uploadResume" accept=".pdf,.doc,.docx" multiple="true">
                                             </div>
                                         </div>
-                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadSubmit">Upload File</a>
+                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadResumeSubmit">Upload File</a>
                                     </div>
                                 </div>
                             </div>

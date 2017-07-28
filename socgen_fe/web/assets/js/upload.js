@@ -7,19 +7,25 @@
 
 $(document).ready(function () {
 
-    $("#uploadBtn").on("change", function () {
-        $("#uploadFile").val(this.files[0].name);
+    $("#uploadJd").on("change", function () {
+        var names = "";
+        $(this.files).each(function () {
+            names = names + $(this)[0].name + ",";
+        });
+        $("#uploadJdFiles").val(names);
     });
-
-    $("#uploadSubmit").on("click", function () {
-        var input = document.getElementById('uploadBtn');
+    $("#uploadJdSubmit").on("click", function () {
+        var input = document.getElementById('uploadJd');
         if (input.files.length === 0) {
             snackbarMsg(1);
         } else {
-            var myFormData = new FormData();
-            myFormData.append('blablabla', input.files[0]);
+            var files = $('#uploadJd')[0].files; //where files would be the id of your multi file input
+            for (var i = 0, f; f = files[i]; i++) {
+                var myFormData = new FormData();
+                myFormData.append("file_" + i, f);
+            }
             $.ajax({
-                url: "../admin/uploadFile.jsp",
+                url: "uploadJd.jsp",
                 type: 'POST',
                 data: myFormData,
                 contentType: false,
@@ -35,12 +41,44 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnExport').on('click', function () {
-        var templateHeader = $("#templateHeader").val();
-        download(templateHeader, "template.csv", "text/plain");
-    });
-
 });
+
+
+$("#uploadResume").on("change", function () {
+    var names = "";
+    $(this.files).each(function () {
+        names = names + $(this)[0].name + ",";
+    });
+    $("#uploadResumeFiles").val(names);
+});
+
+$("#uploadResumeSubmit").on("click", function () {
+    var input = document.getElementById('uploadResume');
+    if (input.files.length === 0) {
+        snackbarMsg(1);
+    } else {
+        var files = $('#uploadResume')[0].files; //where files would be the id of your multi file input
+        for (var i = 0, f; f = files[i]; i++) {
+            var myFormData = new FormData();
+            myFormData.append("file_" + i, f);
+        }
+        $.ajax({
+            url: "uploadFile.jsp",
+            type: 'POST',
+            data: myFormData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (resp) {
+                snackbarMsg(parseInt(resp.trim()));
+            },
+            error: function () {
+                snackbarMsg(4);
+            }
+        });
+    }
+});
+
 
 function snackbarMsg(flag) {
     var snackbarContainer = document.querySelector('#snackbar');
@@ -50,7 +88,7 @@ function snackbarMsg(flag) {
         var data = {message: 'File uploaded successfully'};
     } else if (flag === 3) {
         var data = {message: 'Invalid file contents. Please try again'};
-    }else if (flag === 4) {
+    } else if (flag === 4) {
         var data = {message: 'Failed to upload file. Please try again'};
     }
     'use strict';
