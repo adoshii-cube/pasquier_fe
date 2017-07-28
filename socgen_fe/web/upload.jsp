@@ -32,6 +32,7 @@
         <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,thin,black,medium&amp;lang=en">-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="assets/css/material.min.css">
+        <link rel="stylesheet" href="assets/css/mdl-selectfield.min.css">
         <link rel="stylesheet" href="assets/css/upload.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -73,7 +74,7 @@
                         for="header-menu">
                         <li class="mdl-menu__item">Help & Feedback</li>
                         <li class="mdl-menu__item">Settings</li>
-                        <a href="../signout.jsp" id="signOut">
+                        <a href="index.jsp" id="signOut">
                             <li class="mdl-menu__item"> 
                                 Sign out
                             </li>
@@ -87,6 +88,7 @@
                 </div>
             </header>
             <main class="android-content mdl-layout__content">
+                <div id="loader" class="mdl-progress mdl-js-progress"></div>
                 <div class="page-content">
                     <div class="android-card-container mdl-grid">
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
@@ -100,9 +102,9 @@
                                     </div>
                                     <div class="mdl-card__supporting-text">
                                         <p>
-                                            Upload a job description of your choice
-                                            <br>Please ensure that the job description file is in a <b>PDF</b> format.
-                                            <br>You can only upload one job description at a time.
+                                            Upload one or more job descriptions.
+                                            <br>Please ensure that the job description file(s) is/are in the <b>PDF</b> format.
+                                            <!--<br>You can only upload one job description at a time.-->
                                         </p>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
@@ -126,6 +128,14 @@
                                             <br>Please ensure that the résumés are in either of <b>.doc</b>, <b>.docx</b> or <b>PDF</b> formats
                                             <!--<br>Ensure that only a csv format file is uploaded, in the format specified-->
                                         </p>
+                                        <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label">
+                                            <select id="dropdown_jdForResumeUpload" name="jdForResume" class="mdl-selectfield__select" required>
+                                                <option value="jdr1">MSBI - Technical Manager</option>
+                                                <option value="jdr2">Corporate Loan - SM</option>
+                                            </select>
+                                            <label class="mdl-selectfield__label" for="myselect">Select a JD</label>
+                                            <span class="mdl-selectfield__error">Please select a JD for which the résumés are being uploaded</span>
+                                        </div>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
@@ -149,6 +159,7 @@
             <button class="mdl-snackbar__action" type="button"></button>
         </div>
         <script src="assets/js/material.min.js"></script>
+        <script src="assets/js/mdl-selectfield.min.js"></script>
         <script src="assets/js/upload.js"></script>
     </body>
 </html>

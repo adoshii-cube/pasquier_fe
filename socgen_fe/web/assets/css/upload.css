@@ -394,12 +394,16 @@ textarea{
 }
 
 .android-card-container .mdl-card__title-text {
-/*    color: black;
-    height: auto;*/
+    /*    color: black;
+        height: auto;*/
 }
 
 .android-card-container .mdl-card__supporting-text {
     margin: 0 auto;
+    overflow: visible;
+    min-height: 154px;
+    height: 154px;
+    max-height: 154px;
     /*height: auto;*/
     /*color: black;*/
     /*padding-bottom: 56px;*/
@@ -586,7 +590,7 @@ div .mdl-textfield__label:after {
             height: 100%;
         }*/
 
-    
+
 
     .section-content{
         display: block;
@@ -632,11 +636,11 @@ label{
 /*ADMIN*/
 
 .mdl-progress{
-    width: 98%;
+    width: 100%;
     /*display: none;*/
     visibility: hidden;
     margin: 0 auto;
-    top: 8px;
+    /*top: 8px;*/
 }
 
 button[disabled], html input[disabled]{
@@ -687,11 +691,15 @@ button[disabled], html input[disabled]{
 .jd > .mdl-card__title {
     background: url(../images/icon_jd.png) center right 5% no-repeat #f5f5f5;
     background-size: 10%;
+    height: 64px;
+    max-height: 64px;
 }
 
 .resume > .mdl-card__title {
     background: url(../images/icon_resume.png) center right 5% no-repeat #f5f5f5;
     background-size: 10%;
+    height: 64px;
+    max-height: 64px;
 }
 
 .mdl-data-table{
@@ -963,8 +971,12 @@ button[disabled], html input[disabled]{
 /*IMPORTANT FOR REMOVING BLUR*/
 .mdl-card{
     border-radius: 0px;
+    overflow: visible;
 }
 
+.mdl-selectfield{
+    width: 100%;
+}
 /*#submit{
     position: fixed;
     display: block;
@@ -974,3 +986,16 @@ button[disabled], html input[disabled]{
     margin-bottom: 80px;
     z-index: 900;
 }*/
+
+/*Loader*/
+#loader>.progressbar {
+    background-color: #ff4081;
+}
+
+#loader>.bufferbar {
+    background-image: linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(to right,#ff4081 ,#ff4081);
+}
+
+#loader:not(.mdl-progress--indeterminate):not(.mdl-progress--indeterminate)>.auxbar, .mdl-progress:not(.mdl-progress__indeterminate):not(.mdl-progress__indeterminate)>.auxbar {
+    background-image: linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(to right,#ff4081,#ff4081);
+}

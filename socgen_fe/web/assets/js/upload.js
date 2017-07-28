@@ -24,6 +24,7 @@ $(document).ready(function () {
             for (var i = 0, f; f = files[i]; i++) {
                 myFormData.append("file_" + i, f);
             }
+            var myXhr;
             $.ajax({
                 url: "uploadJd.jsp",
                 type: 'POST',
@@ -31,7 +32,15 @@ $(document).ready(function () {
                 contentType: false,
                 cache: false,
                 processData: false,
+                xhr: function () {
+                    myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    }
+                    return myXhr;
+                },
                 success: function (resp) {
+                    $("#loader").css("visibility", "hidden");
                     snackbarMsg(parseInt(resp.trim()));
                 },
                 error: function () {
@@ -62,6 +71,7 @@ $("#uploadResumeSubmit").on("click", function () {
         for (var i = 0, f; f = files[i]; i++) {
             myFormData.append("file_" + i, f);
         }
+        var myXhr;
         $.ajax({
             url: "uploadFile.jsp",
             type: 'POST',
@@ -69,7 +79,15 @@ $("#uploadResumeSubmit").on("click", function () {
             contentType: false,
             cache: false,
             processData: false,
+            xhr: function () {
+                myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) {
+                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                }
+                return myXhr;
+            },
             success: function (resp) {
+                $("#loader").css("visibility", "hidden");
                 snackbarMsg(parseInt(resp.trim()));
             },
             error: function () {
@@ -93,4 +111,32 @@ function snackbarMsg(flag) {
     }
     'use strict';
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
+}
+
+
+//document.querySelector('#loader').addEventListener('mdl-componentupgraded', function () {
+//    this.MaterialProgress.setProgress(44);
+//});
+
+function progressHandlingFunction(e) { // ***** I mean here. **** //
+    if (e.lengthComputable) {
+
+        var max = e.total;
+        var current = e.loaded;
+
+        var Percentage = (current * 100) / max;
+        console.log(Percentage);
+
+        progressBarUpdate(Math.round(Percentage));
+
+        if (Percentage >= 100)
+        {
+            $("#loader").css("visibility", "hidden");
+        }
+    }
+}
+
+function progressBarUpdate(value) {
+    $("#loader").css("visibility", "visible");
+    document.querySelector('#loader').MaterialProgress.setProgress(value);
 }

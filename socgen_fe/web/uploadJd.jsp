@@ -16,10 +16,12 @@
 
 <%
     File file;
-    int maxFileSize = 10000 * 1024;
-    int maxMemSize = 10000 * 1024;
+    //max file size and memory size is 102.4MB
+    int maxFileSize = 100000 * 1024;
+    int maxMemSize = 100000 * 1024;
 //    String filePath = UtilHelper.getConfigProperty("uploaded_resumes");
-    String filePath = "C:\\Users\\rashmi\\Documents\\iCube\\uploaded_jd\\";
+    String filePath = "D:\\Projects\\Live\\Societe Generale\\Uploads\\JD\\";
+//    String filePath = "C:\\Users\\rashmi\\Documents\\iCube\\uploaded_jd\\";
     System.out.println("File Path :::::::::::::::::::: " + filePath);
     // Verify the content type
     String contentType = request.getContentType();
