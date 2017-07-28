@@ -130,8 +130,8 @@
                                         </p>
                                         <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label">
                                             <select id="dropdown_jdForResumeUpload" name="jdForResume" class="mdl-selectfield__select" required>
-                                                <option value="jdr1">MSBI - Technical Manager</option>
-                                                <option value="jdr2">Corporate Loan - SM</option>
+                                                <option value="MSBI">MSBI - Technical Manager</option>
+                                                <option value="BI">Corporate Loan - SM</option>
                                             </select>
                                             <label class="mdl-selectfield__label" for="myselect">Select a JD</label>
                                             <span class="mdl-selectfield__error">Please select a JD for which the résumés are being uploaded</span>

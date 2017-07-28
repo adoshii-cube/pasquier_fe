@@ -4,6 +4,7 @@
     Author     : rashmi
 --%>
 
+<%@page import="org.owen.helper.UtilHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
 <%@ page import = "javax.servlet.http.*" %>
@@ -11,7 +12,6 @@
 <%@ page import = "org.apache.commons.fileupload.disk.*" %>
 <%@ page import = "org.apache.commons.fileupload.servlet.*" %>
 <%@ page import = "org.apache.commons.io.output.*" %>
-<%--<%@ page import = "org.owen.helper.UtilHelper" %>--%>
 
 
 <%
@@ -19,9 +19,7 @@
     //max file size and memory size is 102.4MB
     int maxFileSize = 100000 * 1024;
     int maxMemSize = 100000 * 1024;
-//    String filePath = UtilHelper.getConfigProperty("uploaded_resumes");
-    String filePath = "D:\\Projects\\Live\\Societe Generale\\Uploads\\JD\\";
-//    String filePath = "C:\\Users\\rashmi\\Documents\\iCube\\uploaded_jd\\";
+    String filePath = UtilHelper.getConfigProperty("uploaded_jd");
     System.out.println("File Path :::::::::::::::::::: " + filePath);
     // Verify the content type
     String contentType = request.getContentType();

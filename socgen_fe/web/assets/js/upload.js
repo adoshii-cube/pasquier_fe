@@ -62,6 +62,8 @@ $("#uploadResume").on("change", function () {
 });
 
 $("#uploadResumeSubmit").on("click", function () {
+    ;
+    var jdSelected = fetchOptionValue("dropdown_jdForResumeUpload");
     var input = document.getElementById('uploadResume');
     if (input.files.length === 0) {
         snackbarMsg(1);
@@ -69,7 +71,7 @@ $("#uploadResumeSubmit").on("click", function () {
         var files = $('#uploadResume')[0].files; //where files would be the id of your multi file input
         var myFormData = new FormData();
         for (var i = 0, f; f = files[i]; i++) {
-            myFormData.append("file_" + i, f);
+            myFormData.append(jdSelected + "_" + i, f);
         }
         var myXhr;
         $.ajax({
@@ -139,4 +141,14 @@ function progressHandlingFunction(e) { // ***** I mean here. **** //
 function progressBarUpdate(value) {
     $("#loader").css("visibility", "visible");
     document.querySelector('#loader').MaterialProgress.setProgress(value);
+}
+
+function fetchOptionValue(dropdownName) {
+    var optionValue = "";
+    var selectedOption = $("#" + dropdownName).parent().find(".mdl-selectfield__box-value").text();
+    optionValue = $('#' + dropdownName + ' option').filter(function () {
+        return $(this).html() === selectedOption;
+    }).val();
+
+    return optionValue;
 }

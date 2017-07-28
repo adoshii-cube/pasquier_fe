@@ -4,6 +4,8 @@
     Author     : rashmi
 --%>
 
+<%@page import="org.owen.parser.ParsingEngine"%>
+<%@page import="org.owen.helper.UtilHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
 <%@ page import = "javax.servlet.http.*" %>
@@ -11,21 +13,17 @@
 <%@ page import = "org.apache.commons.fileupload.disk.*" %>
 <%@ page import = "org.apache.commons.fileupload.servlet.*" %>
 <%@ page import = "org.apache.commons.io.output.*" %>
-<%--<%@ page import = "org.owen.helper.UtilHelper" %>--%>
-
 
 <%
     File file;
     //max file size and memory size is 102.4MB
     int maxFileSize = 100000 * 1024;
     int maxMemSize = 100000 * 1024;
-//    String filePath = UtilHelper.getConfigProperty("uploaded_resumes");
-    String filePath = "D:\\Projects\\Live\\Societe Generale\\Uploads\\Resume\\";
-//    String filePath = "C:\\Users\\rashmi\\Documents\\iCube\\uploaded_resumes\\";
+    String filePath = UtilHelper.getConfigProperty("uploaded_resumes");
+
     System.out.println("File Path :::::::::::::::::::: " + filePath);
     // Verify the content type
     String contentType = request.getContentType();
-
     if ((contentType.indexOf("multipart/form-data") >= 0)) {
         DiskFileItemFactory factory = new DiskFileItemFactory();
         // maximum size that will be stored in memory
@@ -52,13 +50,13 @@
                 if (!fi.isFormField()) {
                     // Get the uploaded file parameters
                     String fileName = fi.getName();
-
+                    String jdPath = (fi.getFieldName().split("_"))[0];
                     // Write the file
                     if (fileName.lastIndexOf("\\") >= 0) {
-                        file = new File(filePath
+                        file = new File(filePath + jdPath + "\\uploaded\\"
                                 + fileName.substring(fileName.lastIndexOf("\\")));
                     } else {
-                        file = new File(filePath
+                        file = new File(filePath + jdPath + "\\uploaded\\"
                                 + fileName.substring(fileName.lastIndexOf("\\") + 1));
                     }
                     fi.write(file);
@@ -67,6 +65,9 @@
 //                    out.println(3);
 //                }
             }
+            
+            ParsingEngine pe = new ParsingEngine();
+            pe.startParsing();
             out.println(2);
 
         } catch (Exception ex) {
