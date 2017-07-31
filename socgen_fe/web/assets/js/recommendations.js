@@ -60,9 +60,10 @@ $(document).ready(function () {
 
     var heightResume = $(".mainContainer").height() - $("#keywordsContainer").height() - 64;
 
-    $(".link").on("click", function (ev) {
+    $(document).on("click", ".link", function (ev) {
+//    $(".link").on("click", function (ev) {
 
-
+        ev.stopImmediatePropagation();
         ev.preventDefault();
 
         $("#pdfViewerContainer").empty();
