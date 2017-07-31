@@ -44,6 +44,7 @@ $(document).ready(function () {
                     snackbarMsg(parseInt(resp.trim()));
                 },
                 error: function () {
+                    $("#loader").css("visibility", "hidden");
                     snackbarMsg(4);
                 }
             });
@@ -93,6 +94,7 @@ $("#uploadResumeSubmit").on("click", function () {
                 snackbarMsg(parseInt(resp.trim()));
             },
             error: function () {
+                $("#loader").css("visibility", "hidden");
                 snackbarMsg(4);
             }
         });

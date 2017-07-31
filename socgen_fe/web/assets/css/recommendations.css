@@ -1048,3 +1048,7 @@ button[disabled], html input[disabled]{
     /*display: none;*/
     margin: auto;
 }
+
+#keywordsContainer .mdl-chip:nth-child(1){
+    display: none;
+}

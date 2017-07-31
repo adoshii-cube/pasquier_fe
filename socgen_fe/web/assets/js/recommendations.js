@@ -6,7 +6,7 @@
 
 
 $(document).ready(function () {
-
+    getRecommendations();
     var slider = $("#slider").slideReveal({
         trigger: $("#trigger2"),
 //        position: "left",
@@ -41,13 +41,8 @@ $(document).ready(function () {
         midClick: true, // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
         callbacks: {
             beforeOpen: function () {
-                var optionValue = fetchOptionValue("dropdown_jd");
-                var pathToPdf;
-                if (optionValue === "jd1") {
-                    pathToPdf = "JD1_MSBI.pdf";
-                } else if (optionValue === "jd2") {
-                    pathToPdf = "JD2_CorporateLoan.pdf";
-                }
+                var optionValue = fetchOptionText("dropdown_jd");
+                var pathToPdf = "data/uploaded_jd/" + optionValue + ".pdf";
                 $(".jdContainer").css("height", window.innerHeight - 32);
                 var heightJD = $(".jdContainer").height();
                 $(".jdContainer").html('<object data = "' + pathToPdf + '" type = "application/pdf" width = "100%" height="' + heightJD + '">alt: <a href="' + pathToPdf + '">' + pathToPdf + '</a></object>');
@@ -65,13 +60,28 @@ $(document).ready(function () {
 
     var heightResume = $(".mainContainer").height() - $("#keywordsContainer").height() - 64;
 
-    $(".link").on("click", function () {
+    $(".link").on("click", function (ev) {
+
+
+        ev.preventDefault();
+
         $("#pdfViewerContainer").empty();
         var url = $(this).find("a").attr("href");
         $("#pdfViewerContainer").html('<object data = "' + url + '" type = "application/pdf" width = "100%" height="' + heightResume + '">alt: <a href="' + url + '>' + url + '</a></object>');
+        var id = $(this).parent().attr("id").split('_')[1];
 
+//        $("#keywordsContainer").empty();
+        $("#keywordsContainer .mdl-chip__text").empty();
+        $(".hiddenRow").css("display", "none");
+        var keywords = $('#keywords_' + id).val().split(',');
+        for (var i = 0; i < keywords.length; i++) {
+            var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow');
+            clone.find('.mdl-chip__text').html(keywords[i]);
+            clone.appendTo('#keywordsContainer');
+        }
         $("#keywordsContainer").css("display", "block");
         return false;
+
     });
 
 });
@@ -84,4 +94,33 @@ function fetchOptionValue(dropdownName) {
     }).val();
 
     return optionValue;
+}
+
+function fetchOptionText(dropdownName) {
+    var selectedOption = $("#" + dropdownName).parent().find(".mdl-selectfield__box-value").text();
+    return selectedOption;
+}
+
+function getRecommendations() {
+    var jd = fetchOptionText("dropdown_jd");
+    var location = fetchOptionText("dropdown_location");
+    var experience = fetchOptionText("dropdown_experience");
+    var qualification = fetchOptionText("dropdown_qualification");
+
+    var jsonObj = {
+        "jd": jd,
+        "location": location,
+        "experience": experience,
+        "qualification": qualification
+    };
+    var postData = {'jsonObj': JSON.stringify(jsonObj)};
+    jQuery.ajax({
+        type: "POST",
+        url: "fetchRecommendations.jsp",
+        data: postData,
+        async: false,
+        success: function (resp) {
+//            var response = JSON.parse(resp);
+            $("#tableContainer").html(resp);
+        }});
 }
