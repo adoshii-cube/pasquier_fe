@@ -981,6 +981,7 @@ button[disabled], html input[disabled]{
 
 .mdl-layout__header--waterfall{
     z-index: 2;
+    overflow: visible;
 }
 
 #tableContainer table{
