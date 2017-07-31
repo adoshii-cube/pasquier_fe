@@ -44,13 +44,15 @@
 
             // Process the uploaded file items
             Iterator i = fileItems.iterator();
+            String jdPath = "";
             while (i.hasNext()) {
                 FileItem fi = (FileItem) i.next();
 //                if (fi.getString().startsWith(templateHeader)) {
                 if (!fi.isFormField()) {
                     // Get the uploaded file parameters
                     String fileName = fi.getName();
-                    String jdPath = (fi.getFieldName().split("_"))[0];
+                    jdPath = (fi.getFieldName().split("_"))[0];
+                    System.out.println("jdPath ::: " + jdPath);
                     // Write the file
                     if (fileName.lastIndexOf("\\") >= 0) {
                         file = new File(filePath + jdPath + "\\uploaded\\"
@@ -67,7 +69,7 @@
             }
             
             ParsingEngine pe = new ParsingEngine();
-            pe.startParsing();
+            pe.startParsing(jdPath);
             out.println(2);
 
         } catch (Exception ex) {
