@@ -181,9 +181,9 @@
                                     <div class="mdl-grid">
                                         <!--<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone tableTitle">Résumé</div>-->
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" id="pdfViewerContainer">
-                                            <!--<object data="data/uploaded_jd/MSBI - Technical Manager.pdf" type="application/pdf" width="100%" height="100%">-->
-                                            <!--alt : <a href="CV2.pdf">blueLagoonTickets.pdf</a>-->
-                                            <!--</object>-->
+<!--                                            <object data="data/uploaded_resumes/MSBI/backup/CV61.pdf" type="application/pdf" width="100%" height="100%">
+                                            alt : <a href="CV2.pdf">blueLagoonTickets.pdf</a>
+                                            </object>-->
                                         </div>
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" id="keywordsContainer">
                                             <span class="mdl-chip" id="keywordChip">

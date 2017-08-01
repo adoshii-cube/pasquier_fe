@@ -121,7 +121,7 @@ function snackbarMsg(flag) {
     if (flag === 1) {
         var data = {message: 'Please select a file to upload'};
     } else if (flag === 2) {
-        var data = {message: 'File uploaded successfully'};
+        var data = {message: 'Upload successful'};
     } else if (flag === 3) {
         var data = {message: 'Invalid file contents. Please try again'};
     } else if (flag === 4) {

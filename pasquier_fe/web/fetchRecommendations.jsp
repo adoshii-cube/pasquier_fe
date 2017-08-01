@@ -30,8 +30,9 @@
         <table class="mdl-data-table mdl-js-data-table">
             <thead>
                 <tr>
+                    <th>Rank</th>
                     <th class="mdl-data-table__cell--non-numeric">Candidate</th>
-                    <th>Score</th>
+                    <th>Status</th>
                     <th class="mdl-data-table__cell--non-numeric">Action</th>
                 </tr>
             </thead>
@@ -40,11 +41,22 @@
                         JSONObject obj = arr.getJSONObject(i);
                         int resultId = (int) obj.get("resultId");
                         String filePath = "data/uploaded_resumes/" + (obj.get("filePath").toString().replaceAll(" ", "%20"));
+                        String status = obj.get("status").toString();
+                        String yesNo = "";
+                        if (status.equals("Selected")) {
+                            yesNo = "Y";
+                        } else if (status.equals("Rejected")) {
+                            yesNo = "N";
+                        }
                 %>
-                <tr id="template_<%=resultId%>" >
+                <tr id="template_<%=resultId%>" class="<%=status%>">
+                    <td><%=i + 1%></td>
                     <td class="mdl-data-table__cell--non-numeric name"><%=obj.get("fileName").toString().replaceAll("(?i).pdf", "")%></td>
-                    <td class="score"><%=obj.get("score")%></td>
-                    <td class="mdl-data-table__cell--non-numeric link"><a href=<%=filePath%> >View resume</a></td>
+                    <td><%=yesNo%></td>
+                    <td class="mdl-data-table__cell--non-numeric link"><a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="resume_<%=resultId%>" href=<%=filePath%> ><i class="material-icons">more_horiz</i></a></td>
+            <div class="mdl-tooltip mdl-tooltip--top" for="resume_<%=resultId%>">
+                View resume
+            </div>
             <input type="hidden" id="keywords_<%=resultId%>" value="<%=obj.get("keywords")%>"/>
         </tr>
         <%}%>

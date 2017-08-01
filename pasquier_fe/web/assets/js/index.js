@@ -22,8 +22,8 @@ $(document).ready(function () {
     }
 
     //Username/Password Declaration
-    var unArray = ["a","demo@owenanalytics.com"];
-    var pwArray = ["a", "abc123"];
+    var unArray = ["hrDemo@socgen.com","demo@owenanalytics.com"];
+    var pwArray = ["abc123", "abc123"];
 
     $("#loginButton").on("click", function () {
 

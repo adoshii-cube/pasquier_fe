@@ -6,7 +6,7 @@
 
 
 $(document).ready(function () {
-    getRecommendations();
+//    getRecommendations();
     var slider = $("#slider").slideReveal({
         trigger: $("#trigger2"),
 //        position: "left",
@@ -15,13 +15,13 @@ $(document).ready(function () {
         top: 64,
         show: function (slider, trigger) {
             $("#trigger2 i").text("keyboard_arrow_left");
-//            setTimeout(function () {
             $("main").css("max-width", "" + $(window).width() - $("#slider").width() + "px");
-//            }, 50);
+            $("#tableContainer table thead").css("width","");
         },
         hide: function (slider, trigger) {
             $("#trigger2 i").text("keyboard_arrow_right");
             $("main").css("max-width", "100%");
+            $("#tableContainer table thead").css("width","calc(100% - 32px)");
         }
     });
 
@@ -71,14 +71,17 @@ $(document).ready(function () {
         $("#pdfViewerContainer").html('<object data = "' + url + '" type = "application/pdf" width = "100%" height="' + heightResume + '">alt: <a href="' + url + '>' + url + '</a></object>');
         var id = $(this).parent().attr("id").split('_')[1];
 
-//        $("#keywordsContainer").empty();
         $("#keywordsContainer .mdl-chip__text").empty();
         $(".hiddenRow").css("display", "none");
         var keywords = $('#keywords_' + id).val().split(',');
+        var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow');
+
         for (var i = 0; i < keywords.length; i++) {
-            var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow');
-            clone.find('.mdl-chip__text').html(keywords[i]);
-            clone.appendTo('#keywordsContainer');
+            if (keywords[i] !== "") {
+                var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow');
+                clone.find('.mdl-chip__text').html(keywords[i]);
+                clone.appendTo('#keywordsContainer');
+            }
         }
         $("#keywordsContainer").css("display", "block");
         return false;
@@ -122,6 +125,12 @@ function getRecommendations() {
         async: false,
         success: function (resp) {
 //            var response = JSON.parse(resp);
+            $(".tableTitle").css("visibility", "visible");
             $("#tableContainer").html(resp);
+            var heightTable = $(".mainContainer").height() - $(".jdDropdownContainer").height() - $(".tableTitle").height() - 108;
+            $("#tableContainer table tbody").css("max-height", heightTable);
+            componentHandler.upgradeDom('MaterialButton');
+            componentHandler.upgradeDom('MaterialRipple');
+            componentHandler.upgradeDom('MaterialTooltip');
         }});
 }

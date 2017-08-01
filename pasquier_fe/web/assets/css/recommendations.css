@@ -29,6 +29,7 @@ a img{
 
 a{
     color: #303f9f;
+    font-weight: 400;
     text-decoration: none;
 }
 
@@ -960,6 +961,7 @@ button[disabled], html input[disabled]{
     font-size: 24px;
     font-weight: 500;
     margin: 0 auto;
+    visibility: hidden;
 }
 
 .jdDropdownContainer,
@@ -1001,12 +1003,34 @@ button[disabled], html input[disabled]{
 
 #tableContainer table thead th:nth-child(1),
 #tableContainer table tbody td:nth-child(1) {
-    width: 40%;
+    width: 5%;
 }
 
 #tableContainer table thead th:nth-child(2),
 #tableContainer table tbody td:nth-child(2) {
-    width: 20%;
+    width: 60%;
+}
+
+#tableContainer table thead th:nth-child(3),
+#tableContainer table tbody td:nth-child(3) {
+    /*width: 15%;*/
+}
+
+#tableContainer table thead th:nth-child(4),
+#tableContainer table tbody td:nth-child(4) {
+    /*width: 20%;*/
+}
+
+.Selected td:nth-child(3){
+    color: #4caf50;
+}
+
+.Rejected td:nth-child(3){
+    color: #ef5350;
+}
+
+#tableContainer td a{
+    color: #9E9E9E;
 }
 
 #tableContainer table tbody {
