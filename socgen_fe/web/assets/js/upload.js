@@ -9,8 +9,13 @@ $(document).ready(function () {
 
     $("#uploadJd").on("change", function () {
         var names = "";
+        var count = 0;
         $(this.files).each(function () {
-            names = names + $(this)[0].name + ",";
+            if (count > 0) {
+                names = names + ',';
+            }
+            names = names + $(this)[0].name;
+            count++;
         });
         $("#uploadJdFiles").val(names);
     });
@@ -41,6 +46,8 @@ $(document).ready(function () {
                 },
                 success: function (resp) {
                     $("#loader").css("visibility", "hidden");
+                    $("#uploadJdFiles").val('');
+
                     snackbarMsg(parseInt(resp.trim()));
                 },
                 error: function () {
@@ -56,8 +63,13 @@ $(document).ready(function () {
 
 $("#uploadResume").on("change", function () {
     var names = "";
+    var count = 0;
     $(this.files).each(function () {
-        names = names + $(this)[0].name + ",";
+        if (count > 0) {
+            names = names + ',';
+        }
+        names = names + $(this)[0].name;
+        count++;
     });
     $("#uploadResumeFiles").val(names);
 });
@@ -91,6 +103,8 @@ $("#uploadResumeSubmit").on("click", function () {
             },
             success: function (resp) {
                 $("#loader").css("visibility", "hidden");
+                $("#uploadResumeFiles").val('');
+
                 snackbarMsg(parseInt(resp.trim()));
             },
             error: function () {
@@ -131,7 +145,9 @@ function progressHandlingFunction(e) { // ***** I mean here. **** //
         var Percentage = (current * 100) / max;
         console.log(Percentage);
 
-        progressBarUpdate(Math.round(Percentage));
+//        progressBarUpdate(Math.round(Percentage));
+        $("#loader").css("visibility", "visible");
+        document.querySelector('#loader').MaterialProgress.setProgress(Math.round(Percentage));
 
         if (Percentage >= 100)
         {
@@ -140,10 +156,10 @@ function progressHandlingFunction(e) { // ***** I mean here. **** //
     }
 }
 
-function progressBarUpdate(value) {
-    $("#loader").css("visibility", "visible");
-    document.querySelector('#loader').MaterialProgress.setProgress(value);
-}
+//function progressBarUpdate(value) {
+//    $("#loader").css("visibility", "visible");
+//    document.querySelector('#loader').MaterialProgress.setProgress(value);
+//}
 
 function fetchOptionValue(dropdownName) {
     var optionValue = "";

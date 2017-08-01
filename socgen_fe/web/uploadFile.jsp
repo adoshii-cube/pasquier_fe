@@ -21,7 +21,6 @@
     int maxMemSize = 100000 * 1024;
     String filePath = UtilHelper.getConfigProperty("uploaded_resumes");
 
-    System.out.println("File Path :::::::::::::::::::: " + filePath);
     // Verify the content type
     String contentType = request.getContentType();
     if ((contentType.indexOf("multipart/form-data") >= 0)) {
@@ -52,7 +51,6 @@
                     // Get the uploaded file parameters
                     String fileName = fi.getName();
                     jdPath = (fi.getFieldName().split("_"))[0];
-                    System.out.println("jdPath ::: " + jdPath);
                     // Write the file
                     if (fileName.lastIndexOf("\\") >= 0) {
                         file = new File(filePath + jdPath + "\\uploaded\\"
@@ -63,11 +61,8 @@
                     }
                     fi.write(file);
                 }
-//                } else {
-//                    out.println(3);
-//                }
             }
-            
+
             ParsingEngine pe = new ParsingEngine();
             pe.startParsing(jdPath);
             out.println(2);

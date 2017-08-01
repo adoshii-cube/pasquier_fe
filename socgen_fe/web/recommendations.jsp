@@ -157,12 +157,8 @@
                                         <div class="mdl-cell mdl-cell--7-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                                             <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label">
                                                 <select id="dropdown_jd" name="jd" class="mdl-selectfield__select" required>
-                                                    <%
-                                                        List<String> jdList = rh.getJobDescriptionFilter();
-                                                        for (int i = 0; i < jdList.size(); i++) {
-                                                    %>
-                                                    <option><%=jdList.get(i)%></option>
-                                                    <%}%>
+                                                    <option value="MSBI">MSBI - Technical Manager</option>
+                                                    <option value="BI">Corporate Loan - SM</option>
                                                 </select>
                                                 <label class="mdl-selectfield__label" for="myselect">Job description</label>
                                                 <span class="mdl-selectfield__error">Please select a job description value</span>
@@ -177,7 +173,7 @@
                                     <div class="mdl-grid">
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone tableTitle">Results</div>
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" id="tableContainer">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
