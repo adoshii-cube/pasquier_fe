@@ -1,6 +1,6 @@
 <%-- 
-    Document   : upload
-    Created on : 27 Jul, 2017, 11:29:53 AM
+    Document   : dashboard
+    Created on : 1 Aug, 2017, 5:24:18 PM
     Author     : adoshi
 --%>
 
@@ -33,7 +33,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="assets/css/material.min.css">
         <link rel="stylesheet" href="assets/css/mdl-selectfield.min.css">
-        <link rel="stylesheet" href="assets/css/upload.css">
+        <link rel="stylesheet" href="assets/css/dc.css">
+        <link rel="stylesheet" href="assets/css/dashboard.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <link rel='shortcut icon' type='image/x-icon' href='assets/images/OWEN_Favicon.ico'/>
@@ -61,9 +62,9 @@
                     <!-- Navigation -->
                     <!--<div class="android-navigation-container">-->
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link selected" href="">Upload</a>
+                        <a class="mdl-navigation__link" href="upload.jsp">Upload</a>
                         <a class="mdl-navigation__link" href="recommendations.jsp">Recommendations</a>
-                        <a class="mdl-navigation__link" href="dashboard.jsp">Dashboard</a>
+                        <a class="mdl-navigation__link selected">Dashboard</a>
                     </nav>
                     <!--</div>-->
                     <button id="header-menu"
@@ -88,64 +89,40 @@
                 </div>
             </header>
             <main class="android-content mdl-layout__content">
-                <div id="loader" class="mdl-progress mdl-js-progress"></div>
                 <div class="page-content">
                     <div class="android-card-container mdl-grid">
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
-                            <!--<div class="mdl-card__title">-->
-                            <!--Instructions: Download the master template and/or upload your company master template to activate a survey for your company-->
-                            <!--</div>-->
-                            <div class="role-container">
-                                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp upload jd">
-                                    <div class="mdl-card__title mdl-card--expand">
-                                        <h2 class="mdl-card__title-text">Upload Job Description</h2>
-                                    </div>
-                                    <div class="mdl-card__supporting-text">
-                                        <p>
-                                            Upload one or more job descriptions.
-                                            <br>Please ensure that the job description file(s) is/are in the <b>PDF</b> format.
-                                            <!--<br>You can only upload one job description at a time.-->
-                                        </p>
-                                    </div>
-                                    <div class="mdl-card__actions mdl-card--border">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadJdFiles"  readonly/>
-                                            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                                                <i class="material-icons">attach_file</i>
-                                                <input type="file" name = "file" id="uploadJd" accept=".pdf"  multiple="true">
-                                            </div>
+                            <div class="mdl-grid mainContainer">
+                                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--10-col mdl-cell--6-col-tablet mdl-cell--3-col-phone containerDropdown" id="dropdown_jd"></div>
+                                        <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone containerButtonReset">
+                                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-chart__reset" id="buttonReset">RESET</button>
                                         </div>
-                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadJdSubmit">Upload File</a>
                                     </div>
                                 </div>
-                                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp upload resume">
-                                    <div class="mdl-card__title mdl-card--expand">
-                                        <h2 class="mdl-card__title-text">Upload résumé</h2>
-                                    </div>
-                                    <div class="mdl-card__supporting-text">
-                                        <p>
-                                            Upload one or more résumés
-                                            <br>Please ensure that the résumés are in either of <b>.doc</b>, <b>.docx</b> or <b>PDF</b> formats
-                                            <!--<br>Ensure that only a csv format file is uploaded, in the format specified-->
-                                        </p>
-                                        <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label">
-                                            <select id="dropdown_jdForResumeUpload" name="jdForResume" class="mdl-selectfield__select" required>
-                                                <option value="MSBI">MSBI - Technical Manager</option>
-                                                <option value="BI">Corporate Loan - SM</option>
-                                            </select>
-                                            <label class="mdl-selectfield__label" for="myselect">Select a JD</label>
-                                            <span class="mdl-selectfield__error">Please select a JD for which the résumés are being uploaded</span>
-                                        </div>
-                                    </div>
-                                    <div class="mdl-card__actions mdl-card--border">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                                            <input class="mdl-textfield__input" placeholder="Upload file here" type="text" id="uploadResumeFiles"  readonly/>
-                                            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                                                <i class="material-icons">attach_file</i>
-                                                <input type="file"  name = "files" id="uploadResume" accept=".pdf,.doc,.docx" multiple="true">
+                                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartPie_Status">
+                                            <div class="mdl-card__title">
+                                                <h2 class="mdl-card__title-text">Status</h2>
                                             </div>
                                         </div>
-                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type = "submit" id="uploadResumeSubmit">Upload File</a>
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Location">
+                                            <div class="mdl-card__title">
+                                                <h2 class="mdl-card__title-text">Location</h2>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartPie_Qualification">
+                                            <div class="mdl-card__title">
+                                                <h2 class="mdl-card__title-text">Qualification</h2>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Experience">
+                                            <div class="mdl-card__title">
+                                                <h2 class="mdl-card__title-text">Experience</h2>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +131,10 @@
                 </div>
             </main>
         </div>
-        <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
-            <div class="mdl-snackbar__text"></div>
-            <button class="mdl-snackbar__action" type="button"></button>
-        </div>
         <script src="assets/js/material.min.js"></script>
-        <script src="assets/js/mdl-selectfield.min.js"></script>
-        <script src="assets/js/upload.js"></script>
+        <script src="assets/js/d3.min.js"></script>
+        <script src="assets/js/crossfilter.min.js"></script>
+        <script src="assets/js/dc.min.js"></script>
+        <script src="assets/js/dashboard.js"></script>
     </body>
 </html>

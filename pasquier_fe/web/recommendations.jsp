@@ -68,7 +68,7 @@
                     <nav class="mdl-navigation">
                         <a class="mdl-navigation__link" href="upload.jsp">Upload</a>
                         <a class="mdl-navigation__link selected">Recommendations</a>
-                        <a class="mdl-navigation__link" href="">Dashboard</a>
+                        <a class="mdl-navigation__link" href="dashboard.jsp">Dashboard</a>
                     </nav>
                     <!--</div>-->
                     <button id="header-menu"
