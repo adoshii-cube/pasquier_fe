@@ -47,18 +47,13 @@ $(document).ready(function () {
                 var heightJD = $(".jdContainer").height();
                 $(".jdContainer").html('<object data = "' + pathToPdf + '" type = "application/pdf" width = "100%" height="' + heightJD + '">alt: <a href="' + pathToPdf + '">' + pathToPdf + '</a></object>');
             },
-            open: function () {
-
-            },
-            close: function () {
-//                $("#relationshipNetwork").css("height", "300px");
-//                $("#legendContainer").css("max-height", "220px");
-            }
+            open: function () {},
+            close: function () {}
         }
     });
 
 
-    var heightResume = $(".mainContainer").height() - $("#keywordsContainer").height() - 64;
+    var heightResume = $(".mainContainer").height() - 64;
 
     $(document).on("click", ".link", function (ev) {
 //    $(".link").on("click", function (ev) {
@@ -78,7 +73,7 @@ $(document).ready(function () {
 
         for (var i = 0; i < keywords.length; i++) {
             if (keywords[i] !== "") {
-                var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow');
+                var clone = $('#keywordChip').clone(true).attr('class', 'mdl-chip hiddenRow mdl-shadow--3dp');
                 clone.find('.mdl-chip__text').html(keywords[i]);
                 clone.appendTo('#keywordsContainer');
             }
