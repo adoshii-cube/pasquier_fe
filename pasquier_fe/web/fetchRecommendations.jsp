@@ -39,7 +39,7 @@
             <tbody>
                 <%for (int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
-                        int resultId = (int) obj.get("resultId");
+                        int resultId = Integer.parseInt(obj.get("resultId").toString());
                         String filePath = "data/uploaded_resumes/" + (obj.get("filePath").toString().replaceAll(" ", "%20"));
                         String status = obj.get("status").toString();
                         String yesNo = "";

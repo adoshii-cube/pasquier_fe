@@ -108,9 +108,9 @@
                                                 <h2 class="mdl-card__title-text">Status</h2>
                                             </div>
                                         </div>
-                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Location">
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Experience">
                                             <div class="mdl-card__title">
-                                                <h2 class="mdl-card__title-text">Location</h2>
+                                                <h2 class="mdl-card__title-text">Experience</h2>
                                             </div>
                                         </div>
                                         <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartPie_Qualification">
@@ -118,9 +118,9 @@
                                                 <h2 class="mdl-card__title-text">Qualification</h2>
                                             </div>
                                         </div>
-                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Experience">
+                                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card" id="chartBar_Location">
                                             <div class="mdl-card__title">
-                                                <h2 class="mdl-card__title-text">Experience</h2>
+                                                <h2 class="mdl-card__title-text">Location</h2>
                                             </div>
                                         </div>
                                     </div>

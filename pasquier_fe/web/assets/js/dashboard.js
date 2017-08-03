@@ -146,8 +146,12 @@ function createPieChartUsingDc(chartId, cfDimension, cfGroup, quesId) {
 
 function createBarChartUsingDc(chartId, cfDimension, cfGroup, quesId) {
     var chart = dc.barChart("#" + chartId, quesId);
+    var chartWidth = 400;
+    if (chartId === "chartBar_Location") {
+        chartWidth = 900;
+    }
     chart
-            .width(400)
+            .width(chartWidth)
             .height(200)
             .transitionDuration(1000)
             .margins({top: 20, bottom: 30, left: 40, right: 20})
